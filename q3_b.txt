@@ -1,0 +1,15 @@
+PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?song ?title ?releaseDate 
+WHERE{
+	dbr:Robin_Stjernberg dbo:musicalArtist ?song .
+	?song dbo:releaseDate ?releaseDate .
+	?song dbp:name ?title .
+	dbr:Robin_Stjernberg dbo:activeYearsStartYear ?yearStarted .
+	FILTER( ?releaseDate > ?yearStarted) .
+}
+
+

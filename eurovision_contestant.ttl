@@ -1,0 +1,56 @@
+@prefix dbr: <http://dbpedia.org/resource/>.
+@prefix dbo: <http://dbpedia.org/ontology/>.
+@prefix dbp: <http://dbpedia.org/property/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix dbc: <http://dbpedia.org/resource/Category:>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+dbr:Robin_Stjernberg dbo:birthDate "1991-02-22"^^xsd:date;
+    dbo:birthPlace dbr:Hässleholm;
+    dbo:birthPlace dbr:Sweden;
+    dbo:activeYearsStartYear "2006-01-01"^^xsd:date;
+    dbo:background "solo_singer";
+    dbo:associatedBand dbr:Eric_Saade;
+    #dbo:associatedBand dbr:What's_up\!;
+    dbo:associatedMusicalArtist dbr:Eric_Saade;
+    #dbo:associatedMusicalArtist dbr:What's_up\!;
+    dbo:genre dbr:Pop_music;
+    dbo:instrument dbr:Vocals;
+    dbo:occupation dbr:Singer;
+    dbo:recordLabel dbr:Universal_Music;
+    dbo:recordLabel dbr:Lionheart_Music_Group;
+    dbo:wikiPageID "31369094"^^xsd:integer;
+    dbo:wikiPageRevisionID "739280476"^^xsd:integer;
+
+    dct:subject dbc:Eurovision_Song_Contest_entrants_of_2013;
+    dct:subject dbc:1991_births;
+    dct:subject dbc:Melodifestivalen_contestants;
+    dct:subject dbc:Melodifestivalen_winners;
+    dct:subject dbc:Swedish_Eurovision_Song_Contest_entrants;
+    dct:subject dbc:Swedish_male_singers;
+
+    rdf:type foaf:Person;
+    rdf:type dbo:Artist;
+    rdfs:label "Robin Stjernberg";
+    foaf:givenName "Robin";
+    foaf:name "Robin Stjernberg";
+    foaf:surname "Stjernberg".
+
+dbr:Sweden_in_the_Eurovision_Song_Contest_2013  dbp:entrant dbr:Robin_Stjernberg.
+dbr:Eurovision_Song_Contest_2013 dbp:extra dbr:Robin_Stjernberg.
+
+_:eurovision2013 dbo:vote 62;
+				dbo:placement 14. 
+
+_:thisWay dbo:genre dbr:Pop_music;
+	dbo:releaseDate "2011-12-16"^^xsd:date;
+	dbp:name "All This Way".
+
+_:You dbo:genre dbr:Pop_music;
+	dbo:releaseDate "2013-02-24"^^xsd:date;
+	dbp:name "You".
+dbr:Robin_Stjernberg dbo:musicalArtist _:thisWay;
+    dbo:musicalArtist _:You.

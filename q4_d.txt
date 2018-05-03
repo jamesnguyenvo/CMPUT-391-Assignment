@@ -1,0 +1,31 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dbc: <http://dbpedia.org/resource/Category:>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?name
+WHERE {
+	?info skos:broader dbc:Eurovision_Song_Contest_entrants_by_year .
+	?name dct:subject ?info .
+	?name dbo:birthPlace ?birthCity .
+    ?name dbp:years ?yearParticipated .
+    { ?name dbo:birthDate ?birthYear . }
+  	UNION
+    { ?name dbo:bandMember ?bandMembers .
+  	?bandMembers dbo:birthDate ?birthYear . }      
+    ?birthCity dbo:country ?birthCountry .
+    FILTER(REGEX( ?birthCountry, "Russia")) .
+    # missing some people as their years are literals?
+    #FILTER(xsd:date(?birthYear))
+    #BIND(YEAR(xsd:date(?birthYear)) AS ?bYear)
+  	BIND(strbefore(str(?birthYear), "-") as ?year)	
+  	#BIND((?yearParticipated - xsd:integer(?year)) as ?participationAge)
+  	BIND((?yearParticipated - xsd:integer(?year)) as ?participationAge) 
+}
+GROUP BY ?participationAge 
+HAVING (22 <= ?participationAge && 40 >= ?participationAge)
